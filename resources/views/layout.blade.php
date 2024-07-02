@@ -32,6 +32,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{route('blog')}}"> บทความทั้งหมด </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/create"> เขียนบทความ </a>
+              </li>
             </ul>
           </div>
         </div>
