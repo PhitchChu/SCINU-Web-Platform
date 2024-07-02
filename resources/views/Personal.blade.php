@@ -17,7 +17,7 @@
         <div class="profile-item">
             <img src="path/to/profile.jpg" alt="Profile Picture" class="profile-picture">
             <div class="profile-details">
-                <p>Assistant Professor Mark Def</p>
+                <p>Assistant Professor </p>
                 <p>Areas of Expertise: Database System</p>
                 <p>Award: Outstanding Research Personnel Award 2024</p>
             </div>
