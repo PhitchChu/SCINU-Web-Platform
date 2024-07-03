@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; // import เชื่อมฐานข้อมูล
 
 class AdminController extends Controller
 {
@@ -20,23 +21,7 @@ class AdminController extends Controller
 
     function index()
     { //ทำหน้าที่ แสดงข้อมูลบทความทั้งหมด
-        $blogs = [
-            [
-                'title' => 'บทความที่ 1',
-                'content' => 'เรื่องบทความที่ 1',
-                'status' => true
-            ],
-            [
-                'title' => 'บทความที่ 2',
-                'content' => 'เรื่องบทความที่ 2',
-                'status' => false
-            ],
-            [
-                'title' => 'บทความที่ 3',
-                'content' => 'เรื่องบทความที่ 3',
-                'status' => true
-            ],
-        ];
+        $blogs = DB::table('blogs')->get(); // ระบุชื่อ blogs ตารางที่ต้องการเข้าถึงข้อมูลมาเก็บไว้ใน blogs
         return view('blog', compact('blogs'));
     }
 
@@ -60,5 +45,8 @@ class AdminController extends Controller
         );
     }
 
+    function delete($id){
+        dd(DB::table('blogs')->where('id',$id));
+    }
 
 }

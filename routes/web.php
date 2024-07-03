@@ -8,6 +8,8 @@ Route::get('Personal',[AdminController::class,'Personal'])->name('Personal'); //
 Route::get('blog',[AdminController::class,'index'])->name('blog'); //ลิงค์กับ Admincontroller blog
 Route::get('create',[AdminController::class,'create']);
 Route::post('insert',[AdminController::class,'insert']); //ทำงานอยู่ที่ admincontroller
+Route::get('delete/{id]',[AdminController::class,'delete'])->name('delete'); //ปุ่มเชื่อมลบบทความกับฐานข้อมูล
+
 
 Route::get('admin/user/Pete',function (){
     return "<h1>ยินดีต้อนรับ Admin</h1>";
