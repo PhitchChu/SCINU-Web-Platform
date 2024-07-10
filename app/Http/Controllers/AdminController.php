@@ -46,7 +46,8 @@ class AdminController extends Controller
     }
 
     function delete($id){
-        dd(DB::table('blogs')->where('id',$id));
+        dd(DB::table('blogs')->where('id',$id)->delete()); // สั่งลบเมื่อกดปุ่ม
+        return redirect('/blog');
     }
 
 }

@@ -26,7 +26,11 @@
                     </td>
                     {{-- ปุ่มลบ --}}
                     <td>
-                        <a href="{{route('delete',$item->id)}}" class="btn btn-danger">ลบ</a>
+                        <a href="{{ route('delete', $item->id) }}" 
+                            class="btn btn-danger"
+                            onclick="return confirm('คุณต้องการลบบทความ {{$item->title}} หรือไม่ ?')"
+                            >ลบ
+                        </a>
                     </td>
                 </tr>
             @endforeach
