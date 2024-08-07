@@ -59,6 +59,13 @@ class AdminController extends Controller
     }
 
     function change($id){
-        dd(DB::table('blogs')->where('id',$id)->first());
+        $blog=DB::table('blogs')->where('id',$id)->first();
+        $data=[
+            // ใส่ ! เป็นการคอนเวิรืสค่าสถานะ เมื่อกดเผยแพร่/ฉบับร่างจะเปลี่ยนไป
+            'status'=>!$blog->status
+        ];
+        // เมื่อ update ได้ก็ส่งไปที่ DB
+        DB::table('blogs')->where('id',$id)->update($data);
+        return redirect('/blog');
     }
 }
