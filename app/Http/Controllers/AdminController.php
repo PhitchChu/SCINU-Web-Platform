@@ -43,11 +43,22 @@ class AdminController extends Controller
                 'content.required' => 'กรูณาป้อนบทความของคุณ'
             ]
         );
-    }
-
-    function delete($id){
-        dd(DB::table('blogs')->where('id',$id)->delete()); // สั่งลบเมื่อกดปุ่ม
+        //สร้างตัวเเปรเพื่อเก็บข้อมูลที่ส่งมาจากฟอร์ม
+        $data=[
+            'title'=> $request->title,
+            'content'=> $request->content
+        ];
+        //นำข้อมูลไปเห็บในฐานข้อมูล
+        DB::table('blogs')->insert($data);
         return redirect('/blog');
     }
 
+    function delete($id){
+        (DB::table('blogs')->where('id',$id)->delete()); // สั่งลบเมื่อกดปุ่ม
+        return redirect('/blog');
+    }
+
+    function change($id){
+        dd(DB::table('blogs')->where('id',$id)->first());
+    }
 }

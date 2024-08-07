@@ -9,7 +9,7 @@ Route::get('blog',[AdminController::class,'index'])->name('blog'); //ลิง�
 Route::get('create',[AdminController::class,'create']);
 Route::post('insert',[AdminController::class,'insert']); //ทำงานอยู่ที่ admincontroller
 Route::get('delete/{id}', [AdminController::class, 'delete'])->name('delete'); //ปุ่มเชื่อมลบบทความกับฐานข้อมูล
-
+Route::get('change/{id}', [AdminController::class, 'change'])->name('change'); // update ปุ่มสถานะเผยแพร่ของบทความ
 
 Route::get('admin/user/Pete',function (){
     return "<h1>ยินดีต้อนรับ Admin</h1>";
