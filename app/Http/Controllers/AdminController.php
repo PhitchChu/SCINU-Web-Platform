@@ -68,4 +68,10 @@ class AdminController extends Controller
         DB::table('blogs')->where('id',$id)->update($data);
         return redirect('/blog');
     }
+
+    function edit($id){
+        $blog=DB::table('blogs')->where('id',$id)->first();
+        // ส่งการทำงานไปที่ edit นำข้อมูลจาก blog ไปแก้ไข
+        return view('edit',compact('blog'));
+    }
 }
