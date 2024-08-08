@@ -68,10 +68,35 @@ class AdminController extends Controller
         DB::table('blogs')->where('id',$id)->update($data);
         return redirect('/blog');
     }
-
+// Start ส่วน update ข้อมูลตอน udate บทความ 
     function edit($id){
         $blog=DB::table('blogs')->where('id',$id)->first();
         // ส่งการทำงานไปที่ edit นำข้อมูลจาก blog ไปแก้ไข
         return view('edit',compact('blog'));
     }
+
+    function update(Request $request,$id)
+    { //รับ requset ที่ส่งมานำมาตรวจสอบก่อนว่าควรบันทึกลงฐานข้อมูลหรือไม่
+        $request->validate(
+            [
+                'title' => 'required|max:50', // ต้องใส่ชือบทความทุกครั้ง
+                'content' => 'required' // ต้องมีการระบุเนื้อหาบทความ
+            ],
+            [ //แจ้ง error เป็นภาษาไทย
+                'title.required' => 'กรุณาป้อนชื่อบทความ',
+                'title.max' => 'ชื่อบทความไม่ควรเกิน 50 ตัวอักษร',
+                'content.required' => 'กรูณาป้อนบทความของคุณ'
+            ]
+        );
+        //สร้างตัวเเปรเพื่อเก็บข้อมูลที่ส่งมาจากฟอร์ม
+        $data=[
+            'title'=> $request->title,
+            'content'=> $request->content
+        ];
+        //เข้าไปที่ข้อมูล blog แล้วนำข้อมูลออกไปใช้งาน เพื่อเริ่ม update ข้อมูลตัวใหม่
+        // โดยอ้างอิงค์จากข้อมูลตัวใหม่ เฉพาะ id นี้เท่านั้น ที่เก็บใน data
+        DB::table('blogs')->where('id',$id)->update($data);
+        return redirect('/blog');
+    }
+// End ส่วน update ข้อมูลตอน udate บทความ 
 }

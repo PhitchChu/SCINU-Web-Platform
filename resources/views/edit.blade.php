@@ -3,7 +3,7 @@
 @section('content')
     <h2 class="text text-center py-2">แก้ไขบทความ</h2>
         {{-- /insert รับเอาข้อมูลจากฟอร์มไปใช้งาน --}}
-    <form method="POST" action="#">
+    <form method="POST" action="{{route('update', $blog->id)}}">
         {{-- @csrf ตรวจสอบตวามถูดต้องของข้อมูลในแบบฟอร์ม --}}
         @csrf
         <div class="form-group">
@@ -21,7 +21,7 @@
         {{-- ป้อนเนื้อหาบทความ --}}
         <div class="form-group">
             <label for="content">เนื้อหาบทความ</label>
-            <textarea name="content" cols="30" rows="5" class="form-control">{{$blog->content}}"></textarea>
+            <textarea name="content" cols="30" rows="5" class="form-control">{{$blog->content}}</textarea>
         </div>
         {{-- ผลลัพธ์จากการตรวจสอบ error Content --}}
         @error('content') 

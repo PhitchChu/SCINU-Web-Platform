@@ -11,6 +11,8 @@ Route::post('insert',[AdminController::class,'insert']); //ทำงานอย
 Route::get('delete/{id}', [AdminController::class, 'delete'])->name('delete'); //ปุ่มเชื่อมลบบทความกับฐานข้อมูล
 Route::get('change/{id}', [AdminController::class, 'change'])->name('change'); // update ปุ่มสถานะเผยแพร่ของบทความ
 Route::get('edit/{id}', [AdminController::class, 'edit'])->name('edit'); // ปุ่ม edit 
+Route::post('update/{id}', [AdminController::class, 'update'])->name('update');//ตอนกด update ให้ส่ง id ของบทความไปด้วย
+
 
 Route::get('admin/user/Pete',function (){
     return "<h1>ยินดีต้อนรับ Admin</h1>";
